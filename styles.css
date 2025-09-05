@@ -1,0 +1,1067 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 /* ===== RESET E CONFIGURA\'c7\'d5ES B\'c1SICAS ===== */\
+* \{\
+    margin: 0;\
+    padding: 0;\
+    box-sizing: border-box;\
+\}\
+\
+html \{\
+    scroll-behavior: smooth;\
+\}\
+\
+body \{\
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\
+    line-height: 1.6;\
+    color: #333;\
+    overflow-x: hidden;\
+\}\
+\
+/* ===== VARI\'c1VEIS CSS ===== */\
+:root \{\
+    --primary-blue: #2c5aa0;\
+    --primary-teal: #4ECDC4;\
+    --primary-yellow: #F7DC6F;\
+    --dark-blue: #1e3a6f;\
+    --light-gray: #f8f9fa;\
+    --medium-gray: #e9ecef;\
+    --text-dark: #333;\
+    --text-light: #666;\
+    --white: #ffffff;\
+    --shadow: 0 4px 20px rgba(0,0,0,0.1);\
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);\
+    --border-radius: 12px;\
+    --transition: all 0.3s ease;\
+\}\
+\
+/* ===== CLASSES UTILIT\'c1RIAS ===== */\
+.container \{\
+    max-width: 1200px;\
+    margin: 0 auto;\
+    padding: 0 2rem;\
+\}\
+\
+.section \{\
+    padding: 5rem 0;\
+\}\
+\
+.bg-light \{\
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--medium-gray) 100%);\
+\}\
+\
+.btn \{\
+    display: inline-block;\
+    padding: 0.75rem 2rem;\
+    border-radius: 8px;\
+    text-decoration: none;\
+    font-weight: 500;\
+    transition: var(--transition);\
+    cursor: pointer;\
+    border: none;\
+    font-size: 1rem;\
+\}\
+\
+.btn-primary \{\
+    background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));\
+    color: var(--white);\
+\}\
+\
+.btn-primary:hover \{\
+    transform: translateY(-2px);\
+    box-shadow: var(--shadow-hover);\
+\}\
+\
+.btn-outline \{\
+    background: transparent;\
+    color: var(--white);\
+    border: 2px solid var(--white);\
+\}\
+\
+.btn-outline:hover \{\
+    background: var(--white);\
+    color: var(--primary-blue);\
+\}\
+\
+/* ===== HEADER E NAVEGA\'c7\'c3O ===== */\
+.header \{\
+    position: fixed;\
+    top: 0;\
+    width: 100%;\
+    z-index: 1000;\
+    background: rgba(255, 255, 255, 0.95);\
+    backdrop-filter: blur(10px);\
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);\
+    transition: var(--transition);\
+\}\
+\
+.navbar \{\
+    padding: 1rem 0;\
+\}\
+\
+.nav-container \{\
+    max-width: 1200px;\
+    margin: 0 auto;\
+    padding: 0 2rem;\
+    display: flex;\
+    justify-content: space-between;\
+    align-items: center;\
+\}\
+\
+.nav-logo \{\
+    display: flex;\
+    align-items: center;\
+    gap: 1rem;\
+\}\
+\
+.logo-icon \{\
+    width: 50px;\
+    height: 50px;\
+    background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal), var(--primary-yellow));\
+    border-radius: var(--border-radius);\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    position: relative;\
+\}\
+\
+.piano-keys \{\
+    display: flex;\
+    gap: 2px;\
+\}\
+\
+.key \{\
+    width: 8px;\
+    height: 25px;\
+    border-radius: 2px;\
+\}\
+\
+.key-1 \{ background: var(--primary-blue); \}\
+.key-2 \{ background: var(--primary-teal); \}\
+.key-3 \{ background: var(--primary-yellow); \}\
+\
+.logo-text h1 \{\
+    font-size: 1.5rem;\
+    font-weight: 700;\
+    color: var(--primary-blue);\
+    margin: 0;\
+\}\
+\
+.logo-text span \{\
+    font-size: 0.9rem;\
+    color: var(--text-light);\
+    font-weight: 500;\
+\}\
+\
+.nav-menu \{\
+    display: flex;\
+    list-style: none;\
+    gap: 2rem;\
+    align-items: center;\
+\}\
+\
+.nav-link \{\
+    text-decoration: none;\
+    color: var(--text-dark);\
+    font-weight: 500;\
+    padding: 0.5rem 1rem;\
+    border-radius: 6px;\
+    transition: var(--transition);\
+    position: relative;\
+\}\
+\
+.nav-link:hover,\
+.nav-link.active \{\
+    color: var(--primary-blue);\
+    background: rgba(44, 90, 160, 0.1);\
+\}\
+\
+.hamburger \{\
+    display: none;\
+    flex-direction: column;\
+    cursor: pointer;\
+    gap: 4px;\
+\}\
+\
+.hamburger span \{\
+    width: 25px;\
+    height: 3px;\
+    background: var(--primary-blue);\
+    border-radius: 2px;\
+    transition: var(--transition);\
+\}\
+\
+/* ===== SE\'c7\'c3O HERO ===== */\
+.hero-section \{\
+    min-height: 100vh;\
+    position: relative;\
+    display: flex;\
+    flex-direction: column;\
+    justify-content: center;\
+    overflow: hidden;\
+\}\
+\
+.hero-background \{\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-teal) 50%, var(--primary-yellow) 100%);\
+    z-index: -2;\
+\}\
+\
+.hero-background::before \{\
+    content: '';\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;\
+    opacity: 0.1;\
+\}\
+\
+.hero-overlay \{\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+    background: rgba(0, 0, 0, 0.2);\
+    z-index: -1;\
+\}\
+\
+.hero-content \{\
+    text-align: center;\
+    color: var(--white);\
+    margin-bottom: 4rem;\
+    position: relative;\
+    z-index: 2;\
+\}\
+\
+.hero-title \{\
+    margin-bottom: 1.5rem;\
+\}\
+\
+.title-main \{\
+    display: block;\
+    font-size: 4rem;\
+    font-weight: 700;\
+    line-height: 1;\
+    margin-bottom: 0.5rem;\
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);\
+\}\
+\
+.title-sub \{\
+    display: block;\
+    font-size: 1.8rem;\
+    font-weight: 400;\
+    opacity: 0.95;\
+    line-height: 1.2;\
+\}\
+\
+.hero-description \{\
+    font-size: 1.2rem;\
+    max-width: 600px;\
+    margin: 0 auto 2rem;\
+    opacity: 0.9;\
+    line-height: 1.6;\
+\}\
+\
+.hero-buttons \{\
+    display: flex;\
+    gap: 1rem;\
+    justify-content: center;\
+    flex-wrap: wrap;\
+\}\
+\
+/* ===== CARDS DE DESTAQUE ===== */\
+.highlight-cards \{\
+    display: grid;\
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\
+    gap: 2rem;\
+    margin-top: 3rem;\
+\}\
+\
+.highlight-card \{\
+    background: var(--white);\
+    padding: 2.5rem 2rem;\
+    border-radius: var(--border-radius);\
+    box-shadow: var(--shadow);\
+    text-align: center;\
+    transition: var(--transition);\
+    position: relative;\
+    overflow: hidden;\
+\}\
+\
+.highlight-card::before \{\
+    content: '';\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 4px;\
+    background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));\
+\}\
+\
+.highlight-card:hover \{\
+    transform: translateY(-10px);\
+    box-shadow: var(--shadow-hover);\
+\}\
+\
+.card-icon \{\
+    width: 80px;\
+    height: 80px;\
+    margin: 0 auto 1.5rem;\
+    background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));\
+    border-radius: 50%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    color: var(--white);\
+    font-size: 2rem;\
+\}\
+\
+.highlight-card h3 \{\
+    font-size: 1.5rem;\
+    color: var(--primary-blue);\
+    margin-bottom: 1rem;\
+    font-weight: 600;\
+\}\
+\
+.highlight-card p \{\
+    color: var(--text-light);\
+    line-height: 1.6;\
+\}\
+\
+/* ===== SE\'c7\'d5ES GERAIS ===== */\
+.section-header \{\
+    text-align: center;\
+    margin-bottom: 3rem;\
+\}\
+\
+.section-title \{\
+    font-size: 2.5rem;\
+    color: var(--primary-blue);\
+    margin-bottom: 1rem;\
+    font-weight: 700;\
+    position: relative;\
+\}\
+\
+.section-title::after \{\
+    content: '';\
+    position: absolute;\
+    bottom: -10px;\
+    left: 50%;\
+    transform: translateX(-50%);\
+    width: 60px;\
+    height: 4px;\
+    background: linear-gradient(45deg, var(--primary-teal), var(--primary-yellow));\
+    border-radius: 2px;\
+\}\
+\
+.section-subtitle \{\
+    font-size: 1.1rem;\
+    color: var(--text-light);\
+    max-width: 600px;\
+    margin: 0 auto;\
+\}\
+\
+/* ===== TIMELINE (HIST\'d3RICO) ===== */\
+.timeline \{\
+    position: relative;\
+    max-width: 800px;\
+    margin: 0 auto;\
+\}\
+\
+.timeline::before \{\
+    content: '';\
+    position: absolute;\
+    left: 50%;\
+    top: 0;\
+    bottom: 0;\
+    width: 4px;\
+    background: linear-gradient(to bottom, var(--primary-blue), var(--primary-teal));\
+    transform: translateX(-50%);\
+\}\
+\
+.timeline-item \{\
+    position: relative;\
+    margin-bottom: 3rem;\
+    width: 50%;\
+\}\
+\
+.timeline-item:nth-child(odd) \{\
+    left: 0;\
+    padding-right: 3rem;\
+\}\
+\
+.timeline-item:nth-child(even) \{\
+    left: 50%;\
+    padding-left: 3rem;\
+\}\
+\
+.timeline-icon \{\
+    position: absolute;\
+    top: 0;\
+    width: 60px;\
+    height: 60px;\
+    background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));\
+    border-radius: 50%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    color: var(--white);\
+    font-size: 1.5rem;\
+    box-shadow: 0 0 20px rgba(44, 90, 160, 0.3);\
+\}\
+\
+.timeline-item:nth-child(odd) .timeline-icon \{\
+    right: -30px;\
+\}\
+\
+.timeline-item:nth-child(even) .timeline-icon \{\
+    left: -30px;\
+\}\
+\
+.timeline-content \{\
+    background: var(--white);\
+    padding: 2rem;\
+    border-radius: var(--border-radius);\
+    box-shadow: var(--shadow);\
+    position: relative;\
+\}\
+\
+.timeline-content h3 \{\
+    color: var(--primary-blue);\
+    font-size: 1.3rem;\
+    margin-bottom: 0.5rem;\
+    font-weight: 600;\
+\}\
+\
+.timeline-date \{\
+    display: inline-block;\
+    background: linear-gradient(45deg, var(--primary-teal), var(--primary-yellow));\
+    color: var(--white);\
+    padding: 0.25rem 0.75rem;\
+    border-radius: 15px;\
+    font-size: 0.9rem;\
+    font-weight: 500;\
+    margin-bottom: 1rem;\
+\}\
+\
+.timeline-content p \{\
+    color: var(--text-light);\
+    line-height: 1.6;\
+\}\
+\
+/* ===== PROJETOS ===== */\
+.projects-grid \{\
+    display: grid;\
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));\
+    gap: 2rem;\
+\}\
+\
+.project-card \{\
+    background: var(--white);\
+    padding: 2rem;\
+    border-radius: var(--border-radius);\
+    box-shadow: var(--shadow);\
+    transition: var(--transition);\
+    position: relative;\
+    overflow: hidden;\
+\}\
+\
+.project-card::before \{\
+    content: '';\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 4px;\
+    background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));\
+\}\
+\
+.project-card:hover \{\
+    transform: translateY(-5px);\
+    box-shadow: var(--shadow-hover);\
+\}\
+\
+.project-icon \{\
+    width: 70px;\
+    height: 70px;\
+    background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));\
+    border-radius: 50%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    color: var(--white);\
+    font-size: 1.8rem;\
+    margin-bottom: 1.5rem;\
+\}\
+\
+.project-card h3 \{\
+    color: var(--primary-blue);\
+    font-size: 1.3rem;\
+    margin-bottom: 1rem;\
+    font-weight: 600;\
+\}\
+\
+.project-card p \{\
+    color: var(--text-light);\
+    line-height: 1.6;\
+    margin-bottom: 1.5rem;\
+\}\
+\
+.project-meta \{\
+    display: flex;\
+    gap: 1rem;\
+    flex-wrap: wrap;\
+\}\
+\
+.project-meta span \{\
+    background: var(--light-gray);\
+    color: var(--primary-blue);\
+    padding: 0.25rem 0.75rem;\
+    border-radius: 15px;\
+    font-size: 0.9rem;\
+    font-weight: 500;\
+    display: flex;\
+    align-items: center;\
+    gap: 0.5rem;\
+\}\
+\
+.project-meta i \{\
+    font-size: 0.8rem;\
+\}\
+\
+/* ===== PUBLICA\'c7\'d5ES ===== */\
+.publications-grid \{\
+    display: grid;\
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));\
+    gap: 2rem;\
+\}\
+\
+.publication-card \{\
+    background: var(--white);\
+    padding: 2rem;\
+    border-radius: var(--border-radius);\
+    box-shadow: var(--shadow);\
+    transition: var(--transition);\
+    position: relative;\
+\}\
+\
+.publication-card:hover \{\
+    transform: translateY(-5px);\
+    box-shadow: var(--shadow-hover);\
+\}\
+\
+.publication-type \{\
+    display: flex;\
+    align-items: center;\
+    gap: 0.5rem;\
+    margin-bottom: 1rem;\
+\}\
+\
+.publication-type i \{\
+    color: var(--primary-teal);\
+    font-size: 1.2rem;\
+\}\
+\
+.publication-type span \{\
+    background: linear-gradient(45deg, var(--primary-teal), var(--primary-yellow));\
+    color: var(--white);\
+    padding: 0.25rem 0.75rem;\
+    border-radius: 15px;\
+    font-size: 0.9rem;\
+    font-weight: 500;\
+\}\
+\
+.publication-card h3 \{\
+    color: var(--primary-blue);\
+    font-size: 1.2rem;\
+    margin-bottom: 1rem;\
+    font-weight: 600;\
+    line-height: 1.4;\
+\}\
+\
+.publication-authors \{\
+    color: var(--text-dark);\
+    font-weight: 500;\
+    margin-bottom: 0.5rem;\
+\}\
+\
+.publication-journal \{\
+    color: var(--text-light);\
+    font-style: italic;\
+    margin-bottom: 1rem;\
+    font-size: 0.95rem;\
+\}\
+\
+.publication-description \{\
+    color: var(--text-light);\
+    line-height: 1.6;\
+    margin-bottom: 1.5rem;\
+\}\
+\
+.publication-link \{\
+    display: inline-flex;\
+    align-items: center;\
+    gap: 0.5rem;\
+    color: var(--primary-blue);\
+    text-decoration: none;\
+    font-weight: 500;\
+    transition: var(--transition);\
+\}\
+\
+.publication-link:hover \{\
+    color: var(--primary-teal);\
+\}\
+\
+/* ===== EQUIPE ===== */\
+.team-category \{\
+    margin-bottom: 4rem;\
+\}\
+\
+.team-category-title \{\
+    font-size: 1.8rem;\
+    color: var(--primary-blue);\
+    margin-bottom: 2rem;\
+    text-align: center;\
+    font-weight: 600;\
+\}\
+\
+.team-grid \{\
+    display: grid;\
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\
+    gap: 2rem;\
+\}\
+\
+.team-member \{\
+    background: var(--white);\
+    padding: 2rem;\
+    border-radius: var(--border-radius);\
+    box-shadow: var(--shadow);\
+    text-align: center;\
+    transition: var(--transition);\
+\}\
+\
+.team-member:hover \{\
+    transform: translateY(-5px);\
+    box-shadow: var(--shadow-hover);\
+\}\
+\
+.member-photo \{\
+    width: 100px;\
+    height: 100px;\
+    background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));\
+    border-radius: 50%;\
+    margin: 0 auto 1.5rem;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    color: var(--white);\
+    font-size: 2.5rem;\
+\}\
+\
+.member-info h4 \{\
+    color: var(--primary-blue);\
+    font-size: 1.2rem;\
+    margin-bottom: 0.5rem;\
+    font-weight: 600;\
+\}\
+\
+.member-role \{\
+    color: var(--primary-teal);\
+    font-weight: 500;\
+    font-size: 1rem;\
+    margin-bottom: 1rem;\
+    display: block;\
+\}\
+\
+.member-bio \{\
+    color: var(--text-light);\
+    line-height: 1.6;\
+    margin-bottom: 1.5rem;\
+    font-size: 0.95rem;\
+\}\
+\
+.member-specialties \{\
+    display: flex;\
+    gap: 0.5rem;\
+    justify-content: center;\
+    flex-wrap: wrap;\
+\}\
+\
+.member-specialties span \{\
+    background: var(--light-gray);\
+    color: var(--primary-blue);\
+    padding: 0.25rem 0.75rem;\
+    border-radius: 15px;\
+    font-size: 0.8rem;\
+    font-weight: 500;\
+\}\
+\
+/* ===== CONTATO ===== */\
+.contact-grid \{\
+    display: grid;\
+    grid-template-columns: 1fr 1fr;\
+    gap: 4rem;\
+    align-items: start;\
+\}\
+\
+.contact-info \{\
+    display: flex;\
+    flex-direction: column;\
+    gap: 2rem;\
+\}\
+\
+.info-card \{\
+    background: var(--white);\
+    padding: 2rem;\
+    border-radius: var(--border-radius);\
+    box-shadow: var(--shadow);\
+    transition: var(--transition);\
+\}\
+\
+.info-card:hover \{\
+    transform: translateY(-3px);\
+    box-shadow: var(--shadow-hover);\
+\}\
+\
+.info-icon \{\
+    width: 60px;\
+    height: 60px;\
+    background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));\
+    border-radius: 50%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    color: var(--white);\
+    font-size: 1.5rem;\
+    margin-bottom: 1rem;\
+\}\
+\
+.info-card h3 \{\
+    color: var(--primary-blue);\
+    font-size: 1.3rem;\
+    margin-bottom: 1rem;\
+    font-weight: 600;\
+\}\
+\
+.info-card p \{\
+    color: var(--text-light);\
+    line-height: 1.6;\
+\}\
+\
+.contact-form-container \{\
+    background: var(--white);\
+    padding: 2.5rem;\
+    border-radius: var(--border-radius);\
+    box-shadow: var(--shadow);\
+\}\
+\
+.contact-form h3 \{\
+    color: var(--primary-blue);\
+    font-size: 1.5rem;\
+    margin-bottom: 2rem;\
+    font-weight: 600;\
+    text-align: center;\
+\}\
+\
+.form-row \{\
+    display: grid;\
+    grid-template-columns: 1fr 1fr;\
+    gap: 1rem;\
+    margin-bottom: 1.5rem;\
+\}\
+\
+.form-group \{\
+    margin-bottom: 1.5rem;\
+\}\
+\
+.form-group label \{\
+    display: block;\
+    margin-bottom: 0.5rem;\
+    color: var(--text-dark);\
+    font-weight: 500;\
+\}\
+\
+.form-group input,\
+.form-group select,\
+.form-group textarea \{\
+    width: 100%;\
+    padding: 0.75rem 1rem;\
+    border: 2px solid var(--medium-gray);\
+    border-radius: 8px;\
+    font-size: 1rem;\
+    transition: var(--transition);\
+    font-family: inherit;\
+\}\
+\
+.form-group input:focus,\
+.form-group select:focus,\
+.form-group textarea:focus \{\
+    outline: none;\
+    border-color: var(--primary-teal);\
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);\
+\}\
+\
+.form-group textarea \{\
+    resize: vertical;\
+    min-height: 120px;\
+\}\
+\
+/* ===== FOOTER ===== */\
+footer \{\
+    background: var(--primary-blue);\
+    color: var(--white);\
+    text-align: center;\
+    padding: 2rem 0;\
+\}\
+\
+footer p \{\
+    margin-bottom: 0.5rem;\
+\}\
+\
+footer p:last-child \{\
+    opacity: 0.8;\
+    font-size: 0.9rem;\
+\}\
+\
+/* ===== RESPONSIVIDADE ===== */\
+@media (max-width: 768px) \{\
+    .container \{\
+        padding: 0 1rem;\
+    \}\
+    \
+    .section \{\
+        padding: 3rem 0;\
+    \}\
+    \
+    /* Header Mobile */\
+    .nav-menu \{\
+        position: fixed;\
+        top: 70px;\
+        left: -100%;\
+        width: 100%;\
+        height: calc(100vh - 70px);\
+        background: var(--white);\
+        flex-direction: column;\
+        justify-content: flex-start;\
+        align-items: center;\
+        padding-top: 2rem;\
+        transition: var(--transition);\
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);\
+    \}\
+    \
+    .nav-menu.active \{\
+        left: 0;\
+    \}\
+    \
+    .hamburger \{\
+        display: flex;\
+    \}\
+    \
+    .hamburger.active span:nth-child(1) \{\
+        transform: rotate(45deg) translate(5px, 5px);\
+    \}\
+    \
+    .hamburger.active span:nth-child(2) \{\
+        opacity: 0;\
+    \}\
+    \
+    .hamburger.active span:nth-child(3) \{\
+        transform: rotate(-45deg) translate(7px, -6px);\
+    \}\
+    \
+    /* Hero Mobile */\
+    .title-main \{\
+        font-size: 2.5rem;\
+    \}\
+    \
+    .title-sub \{\
+        font-size: 1.2rem;\
+    \}\
+    \
+    .hero-description \{\
+        font-size: 1rem;\
+    \}\
+    \
+    .hero-buttons \{\
+        flex-direction: column;\
+        align-items: center;\
+    \}\
+    \
+    .btn \{\
+        width: 100%;\
+        max-width: 280px;\
+        text-align: center;\
+    \}\
+    \
+    /* Cards Mobile */\
+    .highlight-cards \{\
+        grid-template-columns: 1fr;\
+        gap: 1.5rem;\
+    \}\
+    \
+    .projects-grid \{\
+        grid-template-columns: 1fr;\
+    \}\
+    \
+    .publications-grid \{\
+        grid-template-columns: 1fr;\
+    \}\
+    \
+    .team-grid \{\
+        grid-template-columns: 1fr;\
+    \}\
+    \
+    /* Timeline Mobile */\
+    .timeline::before \{\
+        left: 30px;\
+    \}\
+    \
+    .timeline-item \{\
+        width: 100%;\
+        left: 0 !important;\
+        padding-left: 4rem !important;\
+        padding-right: 0 !important;\
+    \}\
+    \
+    .timeline-icon \{\
+        left: 0 !important;\
+        right: auto !important;\
+    \}\
+    \
+    /* Contact Mobile */\
+    .contact-grid \{\
+        grid-template-columns: 1fr;\
+        gap: 2rem;\
+    \}\
+    \
+    .form-row \{\
+        grid-template-columns: 1fr;\
+    \}\
+    \
+    /* Typography Mobile */\
+    .section-title \{\
+        font-size: 2rem;\
+    \}\
+    \
+    .team-category-title \{\
+        font-size: 1.5rem;\
+    \}\
+\}\
+\
+@media (max-width: 480px) \{\
+    .container \{\
+        padding: 0 1rem;\
+    \}\
+    \
+    .title-main \{\
+        font-size: 2rem;\
+    \}\
+    \
+    .title-sub \{\
+        font-size: 1rem;\
+    \}\
+    \
+    .section-title \{\
+        font-size: 1.8rem;\
+    \}\
+    \
+    .highlight-card,\
+    .project-card,\
+    .publication-card,\
+    .team-member \{\
+        padding: 1.5rem;\
+    \}\
+    \
+    .contact-form-container \{\
+        padding: 1.5rem;\
+    \}\
+\}\
+\
+/* ===== ANIMA\'c7\'d5ES ===== */\
+@keyframes fadeInUp \{\
+    from \{\
+        opacity: 0;\
+        transform: translateY(30px);\
+    \}\
+    to \{\
+        opacity: 1;\
+        transform: translateY(0);\
+    \}\
+\}\
+\
+@keyframes fadeInLeft \{\
+    from \{\
+        opacity: 0;\
+        transform: translateX(-30px);\
+    \}\
+    to \{\
+        opacity: 1;\
+        transform: translateX(0);\
+    \}\
+\}\
+\
+@keyframes fadeInRight \{\
+    from \{\
+        opacity: 0;\
+        transform: translateX(30px);\
+    \}\
+    to \{\
+        opacity: 1;\
+        transform: translateX(0);\
+    \}\
+\}\
+\
+.highlight-card,\
+.project-card,\
+.publication-card,\
+.team-member,\
+.timeline-item \{\
+    animation: fadeInUp 0.6s ease-out;\
+\}\
+\
+/* ===== SCROLL BEHAVIOR ===== */\
+.section \{\
+    scroll-margin-top: 80px;\
+\}\
+\
+/* ===== ACESSIBILIDADE ===== */\
+@media (prefers-reduced-motion: reduce) \{\
+    * \{\
+        animation-duration: 0.01ms !important;\
+        animation-iteration-count: 1 !important;\
+        transition-duration: 0.01ms !important;\
+    \}\
+    \
+    html \{\
+        scroll-behavior: auto;\
+    \}\
+\}\
+\
+/* ===== PRINT STYLES ===== */\
+@media print \{\
+    .header,\
+    .hamburger,\
+    .hero-buttons,\
+    .contact-form-container \{\
+        display: none;\
+    \}\
+    \
+    .section \{\
+        padding: 1rem 0;\
+        break-inside: avoid;\
+    \}\
+    \
+    .hero-section \{\
+        min-height: auto;}
