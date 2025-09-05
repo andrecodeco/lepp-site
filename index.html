@@ -3,11 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEPP - Teste</title>
+    <title>LEPP - Laboratório de Ensino e Prática Pianística | UFOP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2c5aa0, #4ECDC4);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #2c5aa0, #4ECDC4, #F7DC6F);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        h1 {
+            color: #2c5aa0;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: #2c5aa0;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #4ECDC4;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #4ECDC4;
+        }
+        
+        .card h3 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            background: linear-gradient(45deg, #2c5aa0, #4ECDC4);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .contact-info h2 {
+            color: white;
+            border: none;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .content {
+                padding: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>LEPP - Laboratório de Ensino e Prática Pianística</h1>
-    <p>Se você está vendo esta página formatada (não o código), funcionou!</p>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">🎹</div>
+                <div>
+                    <h1>LEPP</h1>
+                    <p class="subtitle">Laboratório de Ensino e Prática Pianística</p>
+                    <p><strong>Universidade Federal de Ouro Preto</strong></p>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="section">
+                <h2>Bem-vindos ao LEPP</h2>
+                <p>O Laboratório de Ensino e Prática Pianística é um espaço dedicado à formação integral de pianistas, oferecendo ambiente propício para o desenvolvimento técnico, artístico e pedagógico através de metodologias inovadoras.</p>
+                <p>Nossa missão é integrar ensino, pesquisa e extensão, promovendo excelência no ensino e aprendizagem do piano na Universidade Federal de Ouro Preto.</p>
+            </div>
+
+            <div class="section">
+                <h2>Nossas Atividades</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>🎓 Ensino de Qualidade</h3>
+                        <p>Metodologias modernas e personalizadas para cada estudante, respeitando diferentes níveis e objetivos de aprendizagem.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🔬 Pesquisa Aplicada</h3>
+                        <p>Desenvolvimento de pesquisas em pedagogia pianística, performance e tecnologias aplicadas ao ensino musical.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎪 Práticas Artísticas</h3>
+                        <p>Recitais, masterclasses e apresentações que proporcionam experiência prática e desenvolvimento artístico.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Histórico</h2>
+                <p>O LEPP foi criado em 2015 como parte do Departamento de Música da UFOP, com o objetivo de promover excelência no ensino e pesquisa em piano. Desde sua fundação, tem se consolidado como referência regional no ensino pianístico.</p>
+                <p>Ao longo dos anos, expandimos nossas atividades, incorporando novas tecnologias e metodologias inovadoras, sempre mantendo o foco na formação integral de nossos estudantes.</p>
+            </div>
+
+            <div class="section">
+                <h2>Projetos em Destaque</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Piano para Todos</h3>
+                        <p>Projeto de extensão que oferece aulas de piano para a comunidade externa, promovendo acesso democrático à educação musical.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Festival Pianístico UFOP</h3>
+                        <p>Evento anual que reúne pianistas, estudantes e educadores para concertos, masterclasses e troca de experiências.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Formação Continuada</h3>
+                        <p>Capacitação de professores de piano da região através de workshops e cursos de aperfeiçoamento pedagógico.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h2>Contato</h2>
+            <p><strong>Endereço:</strong> Departamento de Música - UFOP<br>
+            Rua do Seminário, s/n - Centro<br>
+            Ouro Preto/MG - CEP: 35400-000</p>
+            
+            <p><strong>E-mail:</strong> lepp@ufop.edu.br<br>
+            <strong>Telefone:</strong> (31) 3559-1234</p>
+            
+            <p><strong>Horário:</strong> Segunda a Sexta: 8h às 18h</p>
+        </div>
+    </div>
 </body>
 </html>
-
