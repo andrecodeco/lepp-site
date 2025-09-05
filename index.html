@@ -4,214 +4,1181 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEPP - Laboratório de Ensino e Prática Pianística | UFOP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* ===== RESET E CONFIGURAÇÕES BÁSICAS ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #2c5aa0, #4ECDC4);
-            min-height: 100vh;
+            overflow-x: hidden;
         }
-        
+
+        /* ===== VARIÁVEIS CSS ===== */
+        :root {
+            --primary-blue: #2c5aa0;
+            --primary-teal: #4ECDC4;
+            --primary-yellow: #F7DC6F;
+            --dark-blue: #1e3a6f;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        /* ===== HEADER E NAVEGAÇÃO ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .navbar {
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPCEtLSBTaW1wbGlmaWVkIHZlcnNpb24gb2YgTEVQUCBsb2dvIC0tPgo8cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSIxMCIgeT0iMTAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CjxyZWN0IHg9IjAiIHk9IjIwIiB3aWR0aD0iMTIiIGhlaWdodD0iNDAiIGZpbGw9IiMyYzVhYTAiIHJ4PSI2Ii8+CjxyZWN0IHg9IjE2IiB5PSIxMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjUwIiBmaWxsPSIjNEVDREM0IiByeD0iNiIvPgo8cmVjdCB4PSIzMiIgeT0iNSIgd2lkdGg9IjEyIiBoZWlnaHQ9IjU1IiBmaWxsPSIjRjdEQzZGIiByeD0iNiIvPgo8dGV4dCB4PSI0OCIgeT0iMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IjMzMzMzMyI+TEU8L3RleHQ+Cjx0ZXh0IHg9IjQ4IiB5PSI0NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iMzMzMzMzIj5QUDwvdGV4dD4KPC9zdmc+Cjwvc3ZnPg==') center/contain no-repeat;
+            border-radius: 8px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin: 0;
+        }
+
+        .logo-text span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-blue);
+            background: rgba(44, 90, 160, 0.1);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* ===== PÁGINAS ===== */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 120px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
         }
-        
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 0;
-            border-radius: 10px;
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-teal) 50%, var(--primary-yellow) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
             margin-bottom: 2rem;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            font-weight: 700;
+            position: relative;
         }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .logo-icon {
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #2c5aa0, #4ECDC4, #F7DC6F);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary-teal), var(--primary-yellow));
+            border-radius: 2px;
         }
-        
-        h1 {
-            color: #2c5aa0;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .subtitle {
-            color: #666;
-            font-size: 1.2rem;
-        }
-        
-        .content {
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .section {
-            margin-bottom: 3rem;
-        }
-        
-        .section h2 {
-            color: #2c5aa0;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 3px solid #4ECDC4;
-            padding-bottom: 0.5rem;
-        }
-        
-        .section p {
+
+        .section-subtitle {
             font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
         }
-        
-        .cards {
+
+        /* ===== CARDS ===== */
+        .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-        
+
         .card {
-            background: #f8f9fa;
+            background: white;
             padding: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid #4ECDC4;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
         .card h3 {
-            color: #2c5aa0;
+            color: var(--primary-blue);
+            font-size: 1.3rem;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
-        
-        .contact-info {
-            background: linear-gradient(45deg, #2c5aa0, #4ECDC4);
+
+        .card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--primary-teal));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 3rem;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
+            font-size: 1.2rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-icon {
+            right: -25px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -25px;
+        }
+
+        .timeline-content {
+            background: white;
             padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
         }
-        
-        .contact-info h2 {
+
+        .timeline-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-date {
+            background: linear-gradient(45deg, var(--primary-teal), var(--primary-yellow));
             color: white;
-            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
             margin-bottom: 1rem;
         }
-        
+
+        /* ===== EQUIPE ===== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .member-photo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .member-info h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .member-role {
+            color: var(--primary-teal);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* ===== CONTATO ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-teal));
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
         @media (max-width: 768px) {
-            h1 {
+            .nav-menu {
+                position: fixed;
+                top: 100px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 100px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: var(--transition);
+                box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-title {
                 font-size: 2rem;
             }
-            
-            .container {
-                padding: 1rem;
+
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
-            
-            .content {
-                padding: 2rem;
+
+            .section-title {
+                font-size: 2rem;
             }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 4rem !important;
+                padding-right: 0 !important;
+            }
+
+            .timeline-icon {
+                left: 5px !important;
+                right: auto !important;
+            }
+        }
+
+        .bg-light {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--medium-gray) 100%);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <div class="logo-icon">🎹</div>
-                <div>
-                    <h1>LEPP</h1>
-                    <p class="subtitle">Laboratório de Ensino e Prática Pianística</p>
-                    <p><strong>Universidade Federal de Ouro Preto</strong></p>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo" onclick="showPage('home')">
+                    <div class="logo-img"></div>
+                    <div class="logo-text">
+                        <h1>LEPP</h1>
+                        <span>UFOP</span>
+                    </div>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" onclick="showPage('home')" class="nav-link active">Início</a></li>
+                    <li><a href="#" onclick="showPage('historico')" class="nav-link">Histórico</a></li>
+                    <li><a href="#" onclick="showPage('acoes')" class="nav-link">Ações</a></li>
+                    <li><a href="#" onclick="showPage('equipe')" class="nav-link">Equipe</a></li>
+                    <li><a href="#" onclick="showPage('publicacoes')" class="nav-link">Publicações</a></li>
+                    <li><a href="#" onclick="showPage('contato')" class="nav-link">Contato</a></li>
+                </ul>
+                
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
-        </header>
+        </nav>
+    </header>
 
-        <div class="content">
-            <div class="section">
-                <h2>Bem-vindos ao LEPP</h2>
-                <p>O Laboratório de Ensino e Prática Pianística é um espaço dedicado à formação integral de pianistas, oferecendo ambiente propício para o desenvolvimento técnico, artístico e pedagógico através de metodologias inovadoras.</p>
-                <p>Nossa missão é integrar ensino, pesquisa e extensão, promovendo excelência no ensino e aprendizagem do piano na Universidade Federal de Ouro Preto.</p>
+    <!-- PÁGINA INICIAL -->
+    <div id="home" class="page active">
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">LEPP</h1>
+                    <h2 class="hero-subtitle">Laboratório de Ensino e Prática Pianística</h2>
+                    <p>Desenvolvendo excelência no ensino e aprendizagem do piano na Universidade Federal de Ouro Preto</p>
+                </div>
             </div>
+        </section>
 
-            <div class="section">
-                <h2>Nossas Atividades</h2>
-                <div class="cards">
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Bem-vindos ao LEPP</h2>
+                <p class="section-subtitle">
+                    O Laboratório de Ensino e Prática Pianística é um espaço dedicado à formação integral de pianistas, oferecendo ambiente propício para o desenvolvimento técnico, artístico e pedagógico.
+                </p>
+
+                <div class="cards-grid">
                     <div class="card">
-                        <h3>🎓 Ensino de Qualidade</h3>
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Ensino de Qualidade</h3>
                         <p>Metodologias modernas e personalizadas para cada estudante, respeitando diferentes níveis e objetivos de aprendizagem.</p>
                     </div>
+                    
                     <div class="card">
-                        <h3>🔬 Pesquisa Aplicada</h3>
+                        <div class="card-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3>Pesquisa Aplicada</h3>
                         <p>Desenvolvimento de pesquisas em pedagogia pianística, performance e tecnologias aplicadas ao ensino musical.</p>
                     </div>
+                    
                     <div class="card">
-                        <h3>🎪 Práticas Artísticas</h3>
+                        <div class="card-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Práticas Artísticas</h3>
                         <p>Recitais, masterclasses e apresentações que proporcionam experiência prática e desenvolvimento artístico.</p>
                     </div>
                 </div>
             </div>
+        </section>
+    </div>
 
-            <div class="section">
-                <h2>Histórico</h2>
-                <p>O LEPP foi criado em 2015 como parte do Departamento de Música da UFOP, com o objetivo de promover excelência no ensino e pesquisa em piano. Desde sua fundação, tem se consolidado como referência regional no ensino pianístico.</p>
-                <p>Ao longo dos anos, expandimos nossas atividades, incorporando novas tecnologias e metodologias inovadoras, sempre mantendo o foco na formação integral de nossos estudantes.</p>
+    <!-- PÁGINA HISTÓRICO -->
+    <div id="historico" class="page">
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Histórico</h1>
+                    <p class="hero-subtitle">Nossa trajetória de dedicação ao ensino pianístico</p>
+                </div>
             </div>
+        </section>
 
-            <div class="section">
-                <h2>Projetos em Destaque</h2>
-                <div class="cards">
-                    <div class="card">
-                        <h3>Piano para Todos</h3>
-                        <p>Projeto de extensão que oferece aulas de piano para a comunidade externa, promovendo acesso democrático à educação musical.</p>
+        <section class="section">
+            <div class="container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Fundação do LEPP</h3>
+                            <span class="timeline-date">2015</span>
+                            <p>O Laboratório de Ensino e Prática Pianística foi criado como parte do Departamento de Música da UFOP, com o objetivo de promover excelência no ensino e pesquisa em piano.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Festival Pianístico UFOP</h3>
-                        <p>Evento anual que reúne pianistas, estudantes e educadores para concertos, masterclasses e troca de experiências.</p>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-target"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Consolidação da Missão</h3>
+                            <span class="timeline-date">2017</span>
+                            <p>Definição clara da missão de integrar ensino, pesquisa e extensão, oferecendo formação completa em performance e pedagogia pianística.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Formação Continuada</h3>
-                        <p>Capacitação de professores de piano da região através de workshops e cursos de aperfeiçoamento pedagógico.</p>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Modernização Tecnológica</h3>
+                            <span class="timeline-date">2019</span>
+                            <p>Incorporação de novas tecnologias e metodologias inovadoras no ensino do piano, incluindo softwares educativos e equipamentos digitais.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Reconhecimento Regional</h3>
+                            <span class="timeline-date">2021</span>
+                            <p>O laboratório é reconhecido como referência regional no ensino pianístico, estabelecendo parcerias com conservatórios e escolas de música.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Expansão e Futuro</h3>
+                            <span class="timeline-date">2023</span>
+                            <p>Participação em congressos nacionais, desenvolvimento de projetos de pesquisa relevantes e criação do Festival Pianístico da UFOP.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="contact-info">
-            <h2>Contato</h2>
-            <p><strong>Endereço:</strong> Departamento de Música - UFOP<br>
-            Rua do Seminário, s/n - Centro<br>
-            Ouro Preto/MG - CEP: 35400-000</p>
-            
-            <p><strong>E-mail:</strong> lepp@ufop.edu.br<br>
-            <strong>Telefone:</strong> (31) 3559-1234</p>
-            
-            <p><strong>Horário:</strong> Segunda a Sexta: 8h às 18h</p>
-        </div>
+        </section>
     </div>
+
+    <!-- PÁGINA AÇÕES -->
+    <div id="acoes" class="page">
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Ações e Projetos</h1>
+                    <p class="hero-subtitle">Iniciativas que transformam o ensino e a prática pianística</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-light">
+            <div class="container">
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Piano para Todos</h3>
+                        <p>Projeto de extensão que oferece aulas de piano para a comunidade externa, promovendo acesso democrático à educação musical para todas as idades.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>Formação Continuada</h3>
+                        <p>Capacitação de professores de piano da região através de workshops, masterclasses e cursos de aperfeiçoamento pedagógico.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Pesquisa em Pedagogia</h3>
+                        <p>Desenvolvimento de metodologias inovadoras para o ensino do piano, com foco em diferentes faixas etárias e necessidades especiais.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Festival Pianístico UFOP</h3>
+                        <p>Evento anual que reúne pianistas, estudantes e educadores para concertos, masterclasses e troca de experiências culturais.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Tecnologia Musical</h3>
+                        <p>Integração de tecnologias digitais no ensino do piano, incluindo softwares educativos e plataformas de ensino à distância.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Parcerias Institucionais</h3>
+                        <p>Colaborações com conservatórios, escolas de música e outras instituições de ensino superior para intercâmbio acadêmico.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PÁGINA EQUIPE -->
+    <div id="equipe" class="page">
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Nossa Equipe</h1>
+                    <p class="hero-subtitle">Profissionais dedicados à excelência do ensino pianístico</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Coordenação</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-info">
+                            <h4>Prof. Dr. André Codeço</h4>
+                            <span class="member-role">Coordenador Geral</span>
+                            <p>Doutor em Música com especialização em Performance Pianística. Responsável pela coordenação geral das atividades do laboratório, desenvolvendo projetos de ensino, pesquisa e extensão em pedagogia do piano.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 3rem;">Equipe de Especialização</h2>
+                <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    O LEPP conta com uma equipe dedicada de alunos que estão se especializando em piano, contribuindo ativamente para as atividades de ensino, pesquisa e extensão do laboratório.
+                </p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="member-info">
+                            <h4>Alunos Especializandos</h4>
+                            <span class="member-role">Estudantes de Piano</span>
+                            <p>Graduandos e pós-graduandos em Música que desenvolvem suas especializações em piano através das atividades práticas e teóricas do laboratório.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="member-info">
+                            <h4>Monitores</h4>
+                            <span class="member-role">Apoio Pedagógico</span>
+                            <p>Estudantes que auxiliam nas atividades práticas do laboratório, contribuindo com os projetos de extensão e apoio aos demais alunos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="member-info">
+                            <h4>Pesquisadores Iniciantes</h4>
+                            <span class="member-role">Iniciação Científica</span>
+                            <p>Alunos envolvidos em projetos de pesquisa sobre interpretação musical, pedagogia instrumental e estudos de repertório pianístico.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 3rem;">
+                    <h3 style="color: #2c5aa0; margin-bottom: 1.5rem; text-align: center;">Oportunidades para Estudantes</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(45deg, #2c5aa0, #4ECDC4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h4 style="color: #2c5aa0; margin-bottom: 0.5rem;">Prática Docente</h4>
+                            <p style="color: #666; font-size: 0.9rem;">Oportunidade de ensinar piano à comunidade interna e externa</p>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(45deg, #2c5aa0, #4ECDC4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h4 style="color: #2c5aa0; margin-bottom: 0.5rem;">Pesquisa Aplicada</h4>
+                            <p style="color: #666; font-size: 0.9rem;">Desenvolvimento de projetos de iniciação científica</p>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(45deg, #2c5aa0, #4ECDC4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h4 style="color: #2c5aa0; margin-bottom: 0.5rem;">Extensão</h4>
+                            <p style="color: #666; font-size: 0.9rem;">Participação em projetos sociais e culturais</p>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(45deg, #2c5aa0, #4ECDC4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4 style="color: #2c5aa0; margin-bottom: 0.5rem;">Aperfeiçoamento</h4>
+                            <p style="color: #666; font-size: 0.9rem;">Desenvolvimento técnico e interpretativo contínuo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PÁGINA PUBLICAÇÕES -->
+    <div id="publicacoes" class="page">
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Publicações</h1>
+                    <p class="hero-subtitle">Conhecimento compartilhado através da pesquisa científica</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-light">
+            <div class="container">
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Artigos Científicos</h3>
+                        <p><strong>"Metodologias Inovadoras no Ensino do Piano"</strong><br>
+                        Revista de Educação Musical, 2023<br>
+                        <em>Análise de abordagens pedagógicas contemporâneas aplicadas ao ensino pianístico.</em></p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Livros e Capítulos</h3>
+                        <p><strong>"Piano Colaborativo: Teoria e Prática"</strong><br>
+                        Editora UFOP, 2022<br>
+                        <em>Coletânea sobre práticas colaborativas no ensino superior de piano.</em></p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Trabalhos de Conclusão</h3>
+                        <p><strong>TCCs e Dissertações</strong><br>
+                        Biblioteca Digital da UFOP<br>
+                        <em>Pesquisas desenvolvidas por estudantes do DEMUS orientados pelo LEPP.</em></p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Repertório Brasileiro</h3>
+                        <p><strong>"Coletânea de Obras Brasileiras para Piano"</strong><br>
+                        Projeto LEPP, 2023<br>
+                        <em>Partituras e gravações de repertório brasileiro contemporâneo.</em></p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Anais de Congressos</h3>
+                        <p><strong>Participações em Eventos Científicos</strong><br>
+                        ANPPOM, ABEM, Congressos Regionais<br>
+                        <em>Apresentações de pesquisas em eventos nacionais e regionais.</em></p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Material Didático</h3>
+                        <p><strong>"Métodos e Exercícios LEPP"</strong><br>
+                        Acervo Digital do Laboratório<br>
+                        <em>Materiais pedagógicos desenvolvidos para diferentes níveis de ensino.</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PÁGINA CONTATO -->
+    <div id="contato" class="page">
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Contato</h1>
+                    <p class="hero-subtitle">Entre em contato conosco</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3>Endereço</h3>
+                            <p>
+                                <strong>LEPP - Laboratório de Ensino e Prática Pianística</strong><br>
+                                Departamento de Música - DEMUS<br>
+                                Universidade Federal de Ouro Preto<br>
+                                Rua do Seminário, s/n - Centro<br>
+                                Ouro Preto/MG - CEP: 35400-000
+                            </p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3>Telefone</h3>
+                            <p>
+                                <strong>DEMUS:</strong> (31) 3559-1234<br>
+                                <strong>Coordenação LEPP:</strong> (31) 3559-XXXX<br>
+                                <strong>WhatsApp:</strong> (31) 9XXXX-XXXX
+                            </p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>E-mail</h3>
+                            <p>
+                                <strong>Geral:</strong> lepp@ufop.edu.br<br>
+                                <strong>Coordenação:</strong> coordenacao.lepp@ufop.edu.br<br>
+                                <strong>Projetos:</strong> projetos.lepp@ufop.edu.br
+                            </p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3>Horário de Funcionamento</h3>
+                            <p>
+                                <strong>Segunda a Sexta:</strong> 8h às 18h<br>
+                                <strong>Sábado:</strong> 8h às 12h<br>
+                                <strong>Domingo:</strong> Fechado<br>
+                                <em>Horários especiais durante eventos</em>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3 style="color: #2c5aa0; margin-bottom: 2rem; text-align: center;">Envie uma Mensagem</h3>
+                        
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="nome">Nome Completo *</label>
+                                <input type="text" id="nome" name="nome" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" name="telefone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="categoria">Categoria</label>
+                                <select id="categoria" name="categoria">
+                                    <option value="">Selecione uma categoria</option>
+                                    <option value="informacoes">Informações Gerais</option>
+                                    <option value="inscricoes">Inscrições</option>
+                                    <option value="parcerias">Parcerias</option>
+                                    <option value="pesquisa">Pesquisa</option>
+                                    <option value="extensao">Projetos de Extensão</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="assunto">Assunto *</label>
+                                <input type="text" id="assunto" name="assunto" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="mensagem">Mensagem *</label>
+                                <textarea id="mensagem" name="mensagem" rows="6" required placeholder="Descreva sua solicitação ou dúvida..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">
+                                <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 LEPP - Laboratório de Ensino e Prática Pianística | UFOP</p>
+            <p>Departamento de Música - Universidade Federal de Ouro Preto</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== NAVEGAÇÃO ENTRE PÁGINAS =====
+        function showPage(pageId) {
+            // Esconde todas as páginas
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Mostra a página selecionada
+            document.getElementById(pageId).classList.add('active');
+            
+            // Atualiza navegação ativa
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Adiciona classe ativa ao link correspondente
+            const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Scroll para o topo
+            window.scrollTo(0, 0);
+            
+            // Fecha menu mobile se estiver aberto
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        }
+
+        // ===== MENU MOBILE =====
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        // ===== FORMULÁRIO DE CONTATO =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simular envio
+                    alert('Mensagem enviada com sucesso! Retornaremos em breve.');
+                    form.reset();
+                });
+            }
+            
+            // Formatação de telefone
+            const phoneInput = document.getElementById('telefone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    
+                    if (value.length <= 11) {
+                        if (value.length <= 10) {
+                            value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+                        } else {
+                            value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                        }
+                        e.target.value = value;
+                    }
+                });
+            }
+        });
+
+        // ===== EFEITOS DE SCROLL =====
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
